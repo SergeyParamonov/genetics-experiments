@@ -87,23 +87,25 @@ def evolution(selection_word, max_num_generations=1000):
   random = random_str(len(selection_word))
   selection = Creature(selection_word, [])
   root   = Creature(random,[])
-  print("Random word: " + random)
+# print("Random word: " + random)
   generation = [root]
   generation_index  = 1
   num_of_offsprings = 100
   num_of_survivals  = 10
-  while True
+  while True:
     generation = next_generation(generation, num_of_offsprings, num_of_survivals, selection)
     if isPresent(selection,generation):
-      print("Found in " + str(generation_index) + " generation")
+#     print("Found in " + str(generation_index) + " generation")
       break
     generation_index += 1
     if generation_index > max_num_generations:
       raise Exception("Not reached in the maximal number of generations")
   return generation[0], generation_index
 
-out = evolution("Meow meow meow")
-best = out[0]
-for gene in best.genes:
-  print(gene)
-print(best.appearance)
+def print_evolution(sentence):
+  out = evolution(sentence)
+  number_of_generations = out[1]
+  best = out[0]
+# for gene in best.genes:
+#   print(gene)
+  print(str(number_of_generations) + ","+ best.appearance)

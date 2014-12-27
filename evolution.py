@@ -1,5 +1,7 @@
+from __future__ import print_function
 from string import ascii_lowercase
 from random import choice
+
 
 class Creature:
 

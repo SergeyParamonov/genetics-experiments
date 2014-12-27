@@ -1,4 +1,5 @@
 import nltk.data
+import sys
 from string import ascii_lowercase
 from evolution import evolution, print_evolution
 
@@ -24,5 +25,6 @@ def process_text(filename):
 sentences = process_text("text_data/to_kill_a_mocking_bird.txt")
 for sentence in sentences:
   print_evolution(sentence)
+  sys.stdout.flush()
 
 

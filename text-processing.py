@@ -22,7 +22,7 @@ def process_text(filename):
   sentences = [x for x in sentences if len(x) > 10]
   return sentences
 
-sentences = process_text("text_data/to_kill_a_mocking_bird.txt")
+sentences = process_text("text_data/catcher_in_the_rye.txt")
 for sentence in sentences:
   print_evolution(sentence)
   sys.stdout.flush()

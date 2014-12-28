@@ -64,16 +64,18 @@ def reproduce(member, k):
     output.append(mutate(member))
   return output
 
-def survivals(offsprings, selection, size):
+def select(offsprings, selection, size):
   survival_value = map(lambda x: (match(x, selection), x), offsprings)
-  survivals      = list(map(lambda xy: xy[1], sorted(survival_value)[:size]))
-  return survivals
+  select      = list(map(lambda xy: xy[1], sorted(survival_value)[:size]))
+  return select
 
+# generaction is the current set of strings
+# offspring_size is the number of mutations 
 def next_generation(generation, offspring_size, survival_size, selection_word):
   offsprings = []
   for member in generation:
     offsprings += reproduce(member, offspring_size)
-  next_generation = survivals(offsprings, selection_word, survival_size)
+  next_generation = select(offsprings, selection_word, survival_size)
   return next_generation
 
 def isPresent(selection, generation):
@@ -91,13 +93,12 @@ def evolution(selection_word, max_num_generations=2000):
   root   = Creature(random,[])
 # print("Random word: " + random)
   generation = [root]
-  generation_index  = 1
   num_of_offsprings = 100
-  num_of_survivals  = 10
+  num_of_select  = 10
+  generation_index  = 1
   while True:
-    generation = next_generation(generation, num_of_offsprings, num_of_survivals, selection)
+    generation = next_generation(generation, num_of_offsprings, num_of_select, selection)
     if isPresent(selection,generation):
-#     print("Found in " + str(generation_index) + " generation")
       break
     generation_index += 1
     if generation_index > max_num_generations:

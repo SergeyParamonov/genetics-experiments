@@ -108,6 +108,12 @@ def print_evolution(sentence):
   out = evolution(sentence)
   number_of_generations = out[1]
   best = out[0]
-# for gene in best.genes:
-#   print(gene)
   print(str(number_of_generations) + ","+ best.appearance)
+
+def print_genes(sentence):
+  out = evolution(sentence)
+  best = out[0]
+  for gene in best.genes:
+    print(gene)
+  print(best.appearance)
+  
